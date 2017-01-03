@@ -9,8 +9,6 @@ services:
       # MAIL_SERVER: 
       # MAIL_PORT: 
       # MAIL_USE_TLS: "true"
-      # MAIL_USERNAME: 
-      # MAIL_PASSWORD: 
       # MAIL_FROM_NAME: "Mahisoft Mamute"
       # MAIL_FROM: "no-reply@mahisoft.com"
     links:
