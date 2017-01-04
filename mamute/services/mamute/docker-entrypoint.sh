@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e
 
-if [ "$1" = 'mamute' ]; then
-  shift
-  PORT=${MAMUTE_PORT} exec 'run.sh' "$@"
+export "PORT=${MAMUTE_PORT}"
+
+if [ "${1:0:1}" = '-' ]; then
+    set -- './setup.sh' "$@"
 fi
 
 exec "$@"

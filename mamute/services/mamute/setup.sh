@@ -1,3 +1,7 @@
+#!/bin/bash
+
+
+cat > 'WEB-INF/classes/production/hibernate.cfg.xml' <<EOF
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
   "-//Hibernate/Hibernate Configuration DTD//EN"
@@ -23,3 +27,35 @@
     <property name="c3p0.timeout">100</property>
   </session-factory>
 </hibernate-configuration>
+EOF
+
+
+cat > 'WEB-INF/classes/production.properties' <<EOF
+host = https://${MAMUTE_HOST}:${MAMUTE_PORT}
+home.url = /
+mail_logo_url = http://${MAMUTE_HOST}:${MAMUTE_PORT}/imgs/logo-mail.png
+use.routes.parser.hack = false
+feature.auth.db = true
+feature.facebook.login = false
+feature.solr = false
+feature.signup = false
+deletable.questions = false
+attachments.root.fs.path = /var/lib/mamute/attachments
+
+vraptor.simplemail.main.server = ${MAIL_SERVER}
+vraptor.simplemail.main.port = ${MAIL_PORT}
+vraptor.simplemail.main.tls = ${MAIL_USE_TLS}
+vraptor.simplemail.main.username = ${MAIL_USERNAME}
+vraptor.simplemail.main.password = ${MAIL_PASSWORD}
+vraptor.errorcontrol.error.subject = Production error at Mahisoft Mamute
+vraptor.simplemail.main.from = no-reply@mahisoft.com
+vraptor.simplemail.main.from.name = Mahisoft Mamute
+
+feature.google.login = true
+google.redirect_uri = /sign-up/google/
+google.client_id = ${GOOGLE_AUTH_CLIENT_ID}
+google.client_secret = ${GOOGLE_AUTH_CLIENT_SECRET}
+EOF
+
+
+exec './run.sh' "${@}"
