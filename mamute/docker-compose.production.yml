@@ -11,7 +11,7 @@ services:
     links:
       - "mamute:www"
     environment:
-      CERTS: "mamute.mahisoft.com"
+      CERTS: "km.mahisoft.com"
       EMAIL: "mgomez@mahisoft.com"
     volumes:
       - "./data/letsencrypt:/etc/letsencrypt"
