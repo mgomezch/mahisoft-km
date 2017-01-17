@@ -6,7 +6,8 @@ services:
     image: "mgomezch/mamute"
     env_file:
       - "services/mamute/.env"
-    # environment:
+    environment:
+      MAMUTE_PORT: 80
       # MAIL_SERVER: 
       # MAIL_PORT: 
       # MAIL_USE_TLS: "true"
@@ -15,6 +16,8 @@ services:
     links:
       - "mysql"
     restart: "always"
+    volumes:
+      - "./data/mamute/attachments:/var/lib/mamute/attachments"
 
   mysql:
     build:
