@@ -3,8 +3,9 @@ version: "2"
 services:
 
   mamute:
-    build:
-      context: "services/mamute"
+    image: "mgomezch/mamute"
+    env_file:
+      - "services/mamute/.env"
     # environment:
       # MAIL_SERVER: 
       # MAIL_PORT: 
