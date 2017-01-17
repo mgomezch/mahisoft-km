@@ -4,7 +4,8 @@ services:
 
   mamute:
     environment:
-      MAMUTE_HOST: "https://km.mahisoft.com"
+      MAMUTE_ADDRESS: "https://km.mahisoft.com"
+      MAMUTE_FEATURE_GOOGLE_LOGIN: "true"
 
   haproxy:
     image: "bradjonesllc/docker-haproxy-letsencrypt"

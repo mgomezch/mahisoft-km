@@ -7,12 +7,10 @@ services:
     env_file:
       - "services/mamute/.env"
     environment:
-      MAMUTE_PORT: 80
-      # MAIL_SERVER: 
-      # MAIL_PORT: 
-      # MAIL_USE_TLS: "true"
-      # MAIL_FROM_NAME: "Mahisoft Mamute"
-      # MAIL_FROM: "no-reply@mahisoft.com"
+      # MAMUTE_MAIL_ADDRESS: 
+      # MAMUTE_MAIL_USE_TLS: "true"
+      # MAMUTE_MAIL_FROM: "no-reply@mahisoft.com"
+      # MAMUTE_MAIL_FROM_NAME: "Mahisoft Mamute"
     links:
       - "mysql"
     restart: "always"
