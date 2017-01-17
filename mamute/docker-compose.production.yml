@@ -2,6 +2,10 @@ version: "2"
 
 services:
 
+  mamute:
+    environment:
+      MAMUTE_HOST: "https://km.mahisoft.com"
+
   haproxy:
     image: "bradjonesllc/docker-haproxy-letsencrypt"
     restart: "always"
