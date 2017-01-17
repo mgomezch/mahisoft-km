@@ -6,7 +6,7 @@ services:
     image: "mgomezch/mamute"
     env_file:
       - "services/mamute/.env"
-    environment:
+    # environment:
       # MAMUTE_MAIL_ADDRESS: 
       # MAMUTE_MAIL_USE_TLS: "true"
       # MAMUTE_MAIL_FROM: "no-reply@mahisoft.com"
