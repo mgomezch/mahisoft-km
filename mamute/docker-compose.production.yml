@@ -8,7 +8,8 @@ services:
       MAMUTE_FEATURE_GOOGLE_LOGIN: "true"
 
   haproxy:
-    image: "bradjonesllc/docker-haproxy-letsencrypt"
+    build:
+      context: "services/haproxy"
     restart: "always"
     ports:
       - "80:80"
