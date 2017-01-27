@@ -16,6 +16,8 @@ services:
     restart: "always"
     volumes:
       - "./data/mamute/attachments:/var/lib/mamute/attachments"
+      - "./data/mamute/solr:/opt/mamute/WEB-INF/classes/solr/en/mamute/data"
+
 
   mysql:
     build:
