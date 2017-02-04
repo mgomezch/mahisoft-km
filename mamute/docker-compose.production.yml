@@ -6,18 +6,33 @@ services:
     environment:
       MAMUTE_ADDRESS: "https://km.mahisoft.com"
       MAMUTE_FEATURE_GOOGLE_LOGIN: "true"
+      SERVICE_NAME: "mamute"
 
   haproxy:
     build:
       context: "services/haproxy"
-    restart: "always"
-    ports:
-      - "80:80"
-      - "443:443"
-    links:
-      - "mamute:www"
     environment:
       CERTS: "km.mahisoft.com"
       EMAIL: "mgomez@mahisoft.com"
+      SERVICE_80_NAME: "mamute-http"
+      SERVICE_80_CHECK_TCP: "true"
+      SERVICE_80_CHECK_INTERVAL: "30s"
+      SERVICE_80_CHECK_TIMEOUT: "15s"
+      SERVICE_80_TAGS: "prefixhttp-km.mahisoft.com/"
+      SERVICE_443_NAME: "mamute-https"
+      SERVICE_443_CHECK_TCP: "true"
+      SERVICE_443_CHECK_INTERVAL: "30s"
+      SERVICE_443_CHECK_TIMEOUT: "15s"
+      SERVICE_443_TAGS: "prefixhttps-km.mahisoft.com/"
+    labels:
+      SERVICE_NAME: "mamute-proxy"
+    links:
+      - "mamute:www"
+    restart: "always"
     volumes:
       - "./data/letsencrypt:/etc/letsencrypt"
+
+networks:
+  default:
+    external:
+      name: "localservices_default"
